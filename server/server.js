@@ -4,6 +4,9 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
+const ContentURL= 'https://superheroapi.com/api.php/4f6f07fdc09f90c689e5c530ffa460a6/search/z';
+
+
 const data = {
   'beemdkroon': {
     id: 'beemdkroon',
@@ -39,7 +42,10 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: Object.values(data) }));
+  const data = await fetch(ContentURL);
+  const HeroAll = await data.json()
+    console.log(HeroAll)
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: HeroAll }));
 });
 
 app.get('/plant/:id/', async (req, res) => {

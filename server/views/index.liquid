@@ -5,12 +5,41 @@
 <h1 class="h1">{{ title }}</h1>
 
 <ul class="grid">
-  {% for item in items %}
-    <li>
-      <a href="/plant/{{ item.id }}">
-        {% render 'server/components/card/card.liquid', item: item %}
-      </a>
-    </li>
+  {% for item in items.results %}
+    {% if item.image.url == true %}
+    {% comment %} <img src={{ item.image.url }} alt={{ item.name }} /> {% endcomment %}
+    <table>
+      <tr>
+        <th>{{ item.name }}</th>
+        <th>
+          <img src={{ item.image.url }} alt={{ item.name }} />
+        </th>
+      </tr>
+      <tr>
+        <th>Intelligence</th>
+        <th>{{ item.powerstats.intelligence }}</th>
+      </tr>
+      <tr>
+        <th>strength</th>
+        <th>{{ item.powerstats.strength }}</th>
+      </tr>
+      <tr>
+        <th>speed</th>
+        <th>{{ item.powerstats.speed }}</th>
+      </tr>
+      <tr>
+        <th>durability</th>
+        <th>{{ item.powerstats.durability }}</th>
+      </tr>
+      <tr>
+        <th>power</th>
+        <th>{{ item.powerstats.power }}</th>
+      </tr>
+      <th>combat</th>
+      <th>{{ item.powerstats.combat }}</th>
+    </table>
+
+    {% comment %} {% endif %} {% endcomment %}
   {% endfor %}
 </ul>
 
