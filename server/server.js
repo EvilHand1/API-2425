@@ -4,8 +4,8 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-const ContentURL= 'https://superheroapi.com/api.php/4f6f07fdc09f90c689e5c530ffa460a6/search/z';
-
+const BaseURL= 'https://superheroapi.com/api.php/4f6f07fdc09f90c689e5c530ffa460a6/';
+const HeroURL= BaseURL + 'search/f';
 
 const data = {
   'beemdkroon': {
@@ -42,19 +42,23 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  const data = await fetch(ContentURL);
-  const HeroAll = await data.json()
-    console.log(HeroAll)
+  const data = await fetch(HeroURL);
+  const HeroAll = await data.json();
+  
+    // console.log(HeroAll)
+    // console.log('hoi allemaal')
   return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: HeroAll }));
+
 });
 
-app.get('/plant/:id/', async (req, res) => {
+app.get('/Hero/:id/', async (req, res) => {
   const id = req.params.id;
-  const item = data[id];
-  if (!item) {
-    return res.status(404).send('Not found');
-  }
-  return res.send(renderTemplate('server/views/detail.liquid', { title: `Detail page for ${id}`, item }));
+  const endpoint = BaseURL + id;
+  
+  const response = await fetch(endpoint);
+  const specHero = await response.json();
+  
+  return res.send(renderTemplate('server/views/detail.liquid', { title: `Detail page for ${id}, hero:`, hero: specHero }));
 });
 
 const renderTemplate = (template, data) => {

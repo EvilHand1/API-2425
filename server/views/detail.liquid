@@ -1,6 +1,39 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<h1 class="h1">{{ item.name }}</h1>
-<img src="{{ item.image.src }}" alt="{{ item.image.alt }}" width="{{ item.image.width }}" height="{{ item.image.height }}" />
+<h1 class="h1">{{ hero.name }}</h1>
+<img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="{{ hero.image.width }}" height="{{ hero.image.height }} onerror="this.src =
+          'https://picsum.photos/id/237/480/640'" />
+
+<table>
+      <tr>
+        <th>Intelligence</th>
+        <th>{{ hero.powerstats.intelligence }}</th>
+      </tr>
+      <tr>
+        <th>strength</th>
+        <th>{{ hero.powerstats.strength }}</th>
+      </tr>
+      <tr>
+        <th>speed</th>
+        <th>{{ hero.powerstats.speed }}</th>
+      </tr>
+      <tr>
+        <th>durability</th>
+        <th>{{ hero.powerstats.durability }}</th>
+      </tr>
+      <tr>
+        <th>power</th>
+        <th>{{ hero.powerstats.power }}</th>
+      </tr>
+      <tr>
+        <th>combat</th>
+      <th>{{ hero.powerstats.combat }}</th>
+      </tr>
+      <tr>
+        <th>gender</th>
+        <th>{{ hero.appearance.gender }}</th>
+      </tr>
+      
+    </table>
 {% endblock %}

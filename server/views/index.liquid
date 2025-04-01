@@ -3,16 +3,23 @@
 {% block content %}
 
 <h1 class="h1">{{ title }}</h1>
-
 <ul class="grid">
   {% for item in items.results %}
-    {% if item.image.url == true %}
-    {% comment %} <img src={{ item.image.url }} alt={{ item.name }} /> {% endcomment %}
+    {% if item.biography.publisher == "Marvel Comics" or item.biography.publisher == "DC Comics"%}
+      {% if item.powerstats.intelligence != "null" and 
+      item.powerstats.strength != "null" and 
+      item.powerstats.speed != "null" and 
+      item.powerstats.durability != "null" and 
+      item.powerstats.power != "null" and 
+      item.powerstats.combat != "null" %}
     <table>
+      <tr> <th>{{ item.name }}</th></tr>
       <tr>
-        <th>{{ item.name }}</th>
         <th>
-          <img src={{ item.image.url }} alt={{ item.name }} />
+          <a href="/Hero/{{item.id}}">
+          <img src={{ item.image.url }} alt={{ item.name }} onerror="this.src =
+          'https://picsum.photos/id/237/480/640'"/>
+          </a>
         </th>
       </tr>
       <tr>
@@ -39,7 +46,8 @@
       <th>{{ item.powerstats.combat }}</th>
     </table>
 
-    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
+  {% endif %}
   {% endfor %}
 </ul>
 
