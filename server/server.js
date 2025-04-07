@@ -4,7 +4,8 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-const BaseURL= 'https://superheroapi.com/api.php/4f6f07fdc09f90c689e5c530ffa460a6/';
+const API_KEY = process.env.API_TOKEN;
+const BaseURL= 'https://superheroapi.com/api.php/' + API_KEY + '/';
 const HeroURL= BaseURL + 'search/f';
 
 const data = {
