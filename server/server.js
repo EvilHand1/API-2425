@@ -4,8 +4,9 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-const BaseURL= 'https://superheroapi.com/api.php/4f6f07fdc09f90c689e5c530ffa460a6/';
-const HeroURL= BaseURL + 'search/f';
+const API_KEY = process.env.API_TOKEN;
+const BaseURL= 'https://superheroapi.com/api.php/' + API_KEY + '/';
+// const HeroURL= BaseURL + 'search/z';
 
 const data = {
   'beemdkroon': {
@@ -42,12 +43,20 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  const data = await fetch(HeroURL);
-  const HeroAll = await data.json();
+  var randomHeroes = Math.floor(Math.random() * 700) + 1;
+  const TestURL = BaseURL + randomHeroes;
+  const data = await fetch(TestURL);
+  const Hero1 = await data.json();
+
+  var randomHeroes2 = Math.floor(Math.random() * 700) + 1;
+  const TestURL2 = BaseURL + randomHeroes2;
+  const data2 = await fetch(TestURL2);
+  const Hero2 = await data2.json();
   
     // console.log(HeroAll)
     // console.log('hoi allemaal')
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: HeroAll }));
+    console.log("Hero 1: " + randomHeroes + "       Hero 2: " + randomHeroes2)
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', hero1: Hero1, hero2: Hero2 }));
 
 });
 

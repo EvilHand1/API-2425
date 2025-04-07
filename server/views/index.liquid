@@ -4,51 +4,85 @@
 
 <h1 class="h1">{{ title }}</h1>
 <ul class="grid">
-  {% for item in items.results %}
-    {% if item.biography.publisher == "Marvel Comics" or item.biography.publisher == "DC Comics"%}
-      {% if item.powerstats.intelligence != "null" and 
+  {% comment %} {% for item in hero1 %} {% endcomment %}
+    {% comment %} {% if item.biography.publisher == "Marvel Comics" or item.biography.publisher == "DC Comics"%} {% endcomment %}
+      {% comment %} {% if item.powerstats.intelligence != "null" and 
       item.powerstats.strength != "null" and 
       item.powerstats.speed != "null" and 
       item.powerstats.durability != "null" and 
       item.powerstats.power != "null" and 
-      item.powerstats.combat != "null" %}
-    <table>
-      <tr> <th>{{ item.name }}</th></tr>
+      item.powerstats.combat != "null" %} {% endcomment %}
+     <table>
+      <tr> <th>{{ hero1.name }}</th></tr>
       <tr>
         <th>
-          <a href="/Hero/{{item.id}}">
-          <img src={{ item.image.url }} alt={{ item.name }} onerror="this.src =
+          <a href="/Hero/{{hero1.id}}">
+          <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
           'https://picsum.photos/id/237/480/640'"/>
           </a>
         </th>
       </tr>
       <tr>
         <th>Intelligence</th>
-        <th>{{ item.powerstats.intelligence }}</th>
+        <th>{{ hero1.powerstats.intelligence }}</th>
       </tr>
       <tr>
         <th>strength</th>
-        <th>{{ item.powerstats.strength }}</th>
+        <th>{{ hero1.powerstats.strength }}</th>
       </tr>
       <tr>
         <th>speed</th>
-        <th>{{ item.powerstats.speed }}</th>
+        <th>{{ hero1.powerstats.speed }}</th>
       </tr>
       <tr>
         <th>durability</th>
-        <th>{{ item.powerstats.durability }}</th>
+        <th>{{ hero1.powerstats.durability }}</th>
       </tr>
       <tr>
         <th>power</th>
-        <th>{{ item.powerstats.power }}</th>
+        <th>{{ hero1.powerstats.power }}</th>
       </tr>
       <th>combat</th>
-      <th>{{ item.powerstats.combat }}</th>
-    </table>
+      <th>{{ hero1.powerstats.combat }}</th>
+    </table> 
 
-    {% endif %}
-  {% endif %}
-  {% endfor %}
+
+    <table>
+      <tr> <th>{{ hero2.name }}</th></tr>
+      <tr>
+        <th>
+          <a href="/Hero/{{hero2.id}}">
+          <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
+          'https://picsum.photos/id/237/480/640'"/>
+          </a>
+        </th>
+      </tr>
+      <tr>
+        <th>Intelligence</th>
+        <th>{{ hero2.powerstats.intelligence }}</th>
+      </tr>
+      <tr>
+        <th>strength</th>
+        <th>{{ hero2.powerstats.strength }}</th>
+      </tr>
+      <tr>
+        <th>speed</th>
+        <th>{{ hero2.powerstats.speed }}</th>
+      </tr>
+      <tr>
+        <th>durability</th>
+        <th>{{ hero2.powerstats.durability }}</th>
+      </tr>
+      <tr>
+        <th>power</th>
+        <th>{{ hero2.powerstats.power }}</th>
+      </tr>
+      <th>combat</th>
+      <th>{{ hero2.powerstats.combat }}</th>
+    </table> 
+    {% comment %} {% endif %}
+  {% endif %} {% endcomment %}
+  {% comment %} {% endfor %} {% endcomment %}
 </ul>
 
 {% endblock %}
