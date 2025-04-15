@@ -10,33 +10,8 @@ footer {
   navigation: auto;
   }
 
-  /* Create a custom animation */
-/* 
-@keyframes move-out {
-  from {
-    transform: translateY(0%);
-  }
-
-  to {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes move-in {
-  from {
-    transform: translateY(100%);
-  }
-
-  to {
-    transform: translateY(0%);
-  }
-}
-
-
-::view-transition-old(root) {
-  animation: 0.4s ease-in both move-out;
-}
-
-::view-transition-new(root) {
-  animation: 0.4s ease-in both move-in;
-} */
+ ::view-transition-old(root),
+ ::view-transition-new(root){
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+ }
