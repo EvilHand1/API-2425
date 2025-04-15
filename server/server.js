@@ -6,7 +6,7 @@ import sirv from 'sirv';
 
 const API_KEY = process.env.API_TOKEN;
 const BaseURL= 'https://superheroapi.com/api.php/' + API_KEY + '/';
-const HeroURL= BaseURL + 'search/f';
+// const HeroURL= BaseURL + 'search/z';
 
 const data = {
   'beemdkroon': {
@@ -43,12 +43,22 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  const data = await fetch(HeroURL);
-  const HeroAll = await data.json();
+  // var randomHeroes = Math.floor(Math.random() * 700) + 1;
+  // const TestURL = BaseURL + randomHeroes;
+  // const data = await fetch(TestURL);
+  // const Hero1 = await data.json();
+
+  // var randomHeroes2 = Math.floor(Math.random() * 700) + 1;
+  // const TestURL2 = BaseURL + randomHeroes2;
+  // const data2 = await fetch(TestURL2);
+  // const Hero2 = await data2.json();
   
+  const Hero1 = await getHero();
+  const Hero2 = await getHero();
     // console.log(HeroAll)
     // console.log('hoi allemaal')
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: HeroAll }));
+    console.log("Hero 1: " + Hero1.id + "       Hero 2: " + Hero2.id)
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', hero1: Hero1, hero2: Hero2 }));
 
 });
 
@@ -71,3 +81,32 @@ const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, templateData);
 };
 
+async function getHero() {
+  while (true) {
+    const randomId = Math.floor(Math.random() * 700) + 1;
+    const response = await fetch(BaseURL + randomId);
+    const hero = await response.json();
+    console.log("Hero: " + hero.id)
+    
+    var BrokenHero = false;
+
+    const publisher = ['Marvel Comics', 'DC Comics'];
+    const value = hero.biography.publisher;
+
+    if (!publisher.includes(value)){
+      BrokenHero = true;
+    } else{
+      for (const stat of ['strength', 'speed', 'durability', 'power', 'combat']) {
+        const value = hero.powerstats[stat];
+        if (value === "null") {
+          BrokenHero = true;
+          break;
+        }
+      }
+    }
+
+    if (!BrokenHero) { 
+      return hero;
+    }
+  }
+}
