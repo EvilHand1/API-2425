@@ -5,7 +5,7 @@ import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
 const API_KEY = process.env.API_TOKEN;
-const BaseURL= 'https://superheroapi.com/api.php/' + API_KEY + '/';
+const BaseURL = 'https://superheroapi.com/api.php/' + API_KEY + '/';
 // const HeroURL= BaseURL + 'search/z';
 
 const data = {
@@ -49,7 +49,7 @@ app.get('/', async (req, res) => {
   hero1.stats = getPowerStats(hero1);
   hero2.stats = getPowerStats(hero2);
 
-    // console.log("Hero 1: " + Hero1.id + "       Hero 2: " + Hero2.id)
+  // console.log("Hero 1: " + Hero1.id + "       Hero 2: " + Hero2.id)
   return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', hero1, hero2 }));
 
 });
@@ -57,10 +57,10 @@ app.get('/', async (req, res) => {
 app.get('/Hero/:id/', async (req, res) => {
   const id = req.params.id;
   const endpoint = BaseURL + id;
-  
+
   const response = await fetch(endpoint);
   const specHero = await response.json();
-  
+
   return res.send(renderTemplate('server/views/detail.liquid', { title: `Detail page for ${id}, hero:`, hero: specHero }));
 });
 
@@ -79,15 +79,15 @@ async function getHero() {
     const response = await fetch(BaseURL + randomId);
     const hero = await response.json();
     // console.log("Hero: " + hero.id)
-    
+
     var BrokenHero = false;
 
     const publisher = ['Marvel Comics', 'DC Comics'];
     const value = hero.biography.publisher;
 
-    if (!publisher.includes(value)){
+    if (!publisher.includes(value)) {
       BrokenHero = true;
-    } else{
+    } else {
       for (const stat of ['strength', 'speed', 'durability', 'power', 'combat']) {
         const value = hero.powerstats[stat];
         if (value === "null") {
@@ -97,21 +97,22 @@ async function getHero() {
       }
     }
 
-    if (!BrokenHero) { 
+    if (!BrokenHero) {
       return hero;
     }
   }
 }
 
-function getPowerStats(hero){
+function getPowerStats(hero) {
   const newPowerstats = []
 
   for (const [key, value] of Object.entries(hero.powerstats)) {
     const integer = Math.floor(value / 10)
+    const decimal = Math.round((value / 10 - integer) * 100) / 100;
     newPowerstats.push({
       name: key,
       integer: integer,
-      decimal: value / 10 - integer // todo: afronden naar 2 decimalen
+      decimal: decimal // todo: afronden naar 2 decimalen
     })
   }
   return newPowerstats

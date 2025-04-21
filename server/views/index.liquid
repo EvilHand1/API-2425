@@ -9,15 +9,7 @@
 
 
 <ul class="grid">
-
-  {% comment %} {% for item in hero1 %} {% endcomment %}
-    {% comment %} {% if item.biography.publisher == "Marvel Comics" or item.biography.publisher == "DC Comics"%} {% endcomment %}
-      {% comment %} {% if item.powerstats.intelligence != "null" and 
-      item.powerstats.strength != "null" and 
-      item.powerstats.speed != "null" and 
-      item.powerstats.durability != "null" and 
-      item.powerstats.power != "null" and 
-      item.powerstats.combat != "null" %} {% endcomment %}
+  
   <div class="card">
     <p>{{ hero1.name }}</p>
     <a href="/Hero/{{hero1.id}}">
@@ -25,72 +17,15 @@
       'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
       />
     </a>
-    {% comment %} <p>Intelligence: {{ hero1.powerstats.intelligence }}</p>
-    <p>strength:     {{ hero1.powerstats.strength }}</p>
-    <p>speed:        {{ hero1.powerstats.speed }}</p>
-    <p>durability:   {{ hero1.powerstats.durability }}</p>
-    <p>power:        {{ hero1.powerstats.power }}</p>
-    <p>combat:         {{ hero1.powerstats.combat }}</p> {% endcomment %}
-    
-     {% comment %} <div class="star-rating">
-      {% assign totalStars = 10 %}
-      {% assign rating = hero1.powerstats.intelligence | divided_by: 10 %}
-      {% assign fullStars = rating | floor %}
-      {% assign hasHalfStar = rating | minus: fullStars | round: 1 %}
-      {% assign halfIndex = fullStars | plus: 1 %}
 
-      {%- for i in (1..totalStars) -%}
-        {% if i <= fullStars %}
-          <span class="star filled"></span>
-          {% elsif i == halfIndex and hasHalfStar >= 0.5 %}
-            <span class="star half"></span>
-        {% else %}
-          <span class="star"></span>
-        {% endif %}
-      {%- endfor -%}
-    </div> {% endcomment %}
-  
- <div class="hero-stats">
-  <p>{{ hero1.powerstats.intelligence }}</p>
-  {% comment %} {% assign stats = 'intelligence', 'strength', 'speed', 'durability', 'power', 'combat'%} {% endcomment %}
-  {% for stat in hero1.stats %}
-    <p>{{ stat.name }}</p>
-    
-    <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
-      <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+    <div class="hero-stats">
+      {% for stat in hero1.stats %}
+        <p>{{ stat.name }}</p>
+        <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+          <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
-  {% comment %} 
-
-  {% for stat in hero1.powerstats['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'] %}
-   
-      <p>Chicken: {{ stat }}</p>
-  
-  {% endfor %} {% endcomment %}
-           
-          {% comment %} {% assign rawValue = hero.powerstats[stat] | default: 0 %}
-          {% assign rating = rawValue | times: totalStars | divided_by: 100 %}
-          {% assign fullStars = rating | floor %}
-          {% assign hasHalfStar = rating | minus: fullStars | round: 1 %}
-          {% assign halfIndex = fullStars | plus: 1 %}
-  
-          <div class="star-rating">
-            {%- for i in (1..totalStars) -%}
-              {% if i <= fullStars %}
-                <span class="star filled"></span>
-              {% elsif i == halfIndex and hasHalfStar >= 0.5 %}
-                <span class="star half"></span>
-              {% else %}
-                <span class="star"></span>
-              {% endif %}
-            {%- endfor -%}
-          </div> {% endcomment %}
-
-     
-    </div>
-
-        
-
   </div> 
 
 

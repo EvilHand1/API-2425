@@ -41,12 +41,40 @@ img {
   color: #FFD700;
 }
 
+[data-integer="0"] {
+  .star {
+    &:nth-of-type(1) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
 [data-integer="1"] {
   .star {
     &:nth-of-type(1) {
       &::before {
         content: '★';
         color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(2) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
       }
     }
   }
@@ -60,17 +88,17 @@ img {
         color: #FFD700;
       }
     }
-  }
 
-  &:nth-of-type(3) {
-    &::after {
-      content: '★';
-      color: #FFD700;
-      width: calc(100% * var(--decimal));
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
+    &:nth-of-type(3) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
     }
   }
 }
@@ -81,6 +109,18 @@ img {
       &::before {
         content: '★';
         color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(4) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
       }
     }
   }
@@ -94,6 +134,18 @@ img {
         color: #FFD700;
       }
     }
+
+    &:nth-of-type(5) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
   }
 }
 
@@ -103,6 +155,18 @@ img {
       &::before {
         content: '★';
         color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(6) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
       }
     }
   }
@@ -116,10 +180,20 @@ img {
         color: #FFD700;
       }
     }
+
+    &:nth-of-type(7) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
   }
 }
-
-
 
 [data-integer="7"] {
   .star {
@@ -129,16 +203,17 @@ img {
         color: #FFD700;
       }
     }
+
     &:nth-of-type(8) {
-     &::after {
-      content: '★';
-      color: #FFD700;
-      width: calc(100% * var(--decimal));
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-    }
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
     }
   }
 }
@@ -152,16 +227,17 @@ img {
         color: #FFD700;
       }
     }
+
     &:nth-of-type(9) {
-     &::after {
-      content: '★';
-      color: #FFD700;
-      width: calc(100% * var(--decimal));
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-    }
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
     }
   }
 }
@@ -172,6 +248,18 @@ img {
       &::before {
         content: '★';
         color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(10) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
       }
     }
   }
@@ -185,10 +273,20 @@ img {
         color: #FFD700;
       }
     }
+
+    &:nth-of-type(11) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
   }
 }
-
-
 
 /* .star.half::before {
   content: '☆';
