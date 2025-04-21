@@ -6,63 +6,50 @@
 <form action="/" method="get">
   <button id="NewHeroes">Get New Heroes</button>
 </form>
-
+<button id="battleButton">Battle</button>
 
 <ul class="grid">
-  
-  <div class="card">
-    <p>{{ hero1.name }}</p>
-    <a href="/Hero/{{hero1.id}}">
-      <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
-      'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
-      />
-    </a>
 
-    <div class="hero-stats">
-      {% for stat in hero1.stats %}
-        <p>{{ stat.name }}</p>
-        <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
-          <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-        </div>
-      {% endfor %}
+  <div class="card">
+    <div class="card-content">
+      <p>{{ hero1.name }}</p>
+      <a href="/Hero/{{hero1.id}}">
+        <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
+        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
+        />
+      </a>
+
+      <div class="hero-stats">
+        {% for stat in hero1.stats %}
+          <p>{{ stat.name }}</p>
+          <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div> 
 
 
-    {% comment %} <table class="card">
-      <tr> <th>{{ hero2.name }}</th></tr>
-      <tr>
-        <th>
-          <a href="/Hero/{{hero2.id}}">
-          <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
-          'https://picsum.photos/id/237/480/640'"/>
-          </a>
-        </th>
-      </tr>
-      <tr>
-        <th>Intelligence</th>
-        <th>{{ hero2.powerstats.intelligence }}</th>
-      </tr>
-      <tr>
-        <th>strength</th>
-        <th>{{ hero2.powerstats.strength }}</th>
-      </tr>
-      <tr>
-        <th>speed</th>
-        <th>{{ hero2.powerstats.speed }}</th>
-      </tr>
-      <tr>
-        <th>durability</th>
-        <th>{{ hero2.powerstats.durability }}</th>
-      </tr>
-      <tr>
-        <th>power</th>
-        <th>{{ hero2.powerstats.power }}</th>
-      </tr>
-      <th>combat</th>
-      <th>{{ hero2.powerstats.combat }}</th>
-    </table>  {% endcomment %}
+  <div class="card">
+    <div class="card-content">
+      <p>{{ hero2.name }}</p>
+      <a href="/Hero/{{hero2.id}}">
+        <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
+        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
+        />
+      </a>
 
+      <div class="hero-stats">
+        {% for stat in hero2.stats %}
+          <p>{{ stat.name }}</p>
+          <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div> 
 
    
 </ul>

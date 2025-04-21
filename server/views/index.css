@@ -16,7 +16,12 @@ img {
 .card {
   width: 100%;
   max-width: 300px;
-  /* transform: rotateY(45deg); */
+  /* transform: rotateY(45deg) translateX(500px) translateZ(20px); */
+  background-color: black;
+}
+
+.card-content{
+  background: #00043d;
 }
 
 .card img {}
