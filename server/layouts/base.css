@@ -6,6 +6,7 @@ footer {
   padding: 1rem;
 }
 
+/* https://css-pattern.com/ */
 html {
   --s: 9px; /* control the size*/
   --c1: #02006b;

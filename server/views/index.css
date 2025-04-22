@@ -9,7 +9,7 @@
 }
 
 
-/* CSS */
+/* https://getcssscan.com/css-buttons-examples */
 #battlebutton {
   --c: gold;
   background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p, 100%) / 300% no-repeat, #00043d;
