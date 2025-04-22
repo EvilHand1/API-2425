@@ -3,7 +3,7 @@
 {% block content %}
 <h1 class="h1">{{ hero.name }}</h1>
 <img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="{{ hero.image.width }}" height="{{ hero.image.height }} onerror="this.src =
-          'https://picsum.photos/id/237/480/640' style="view-transition-name: detailpage-1" />
+          'https://picsum.photos/id/237/480/640' style="view-transition-name: detailpage-{{ hero.id }}" />
 
 <table>
       <tr>

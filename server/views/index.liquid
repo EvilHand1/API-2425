@@ -12,10 +12,10 @@
 
   <div class="card">
     <div class="card-content">
-      <p>{{ hero1.name }}</p>
+      <p class="Name">{{ hero1.name }}</p>
       <a href="/Hero/{{hero1.id}}">
         <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
-        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
+        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-{{ hero1.id }}"
         />
       </a>
 
@@ -36,7 +36,7 @@
       <p>{{ hero2.name }}</p>
       <a href="/Hero/{{hero2.id}}">
         <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
-        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-1"
+        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-{{ hero2.id }}"
         />
       </a>
 
