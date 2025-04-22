@@ -1,9 +1,6 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<h1 class="h1">{{ hero.name }}</h1>
-
-
 <div class="folder">
   <div class="left-page">
     <p class="Name">File: {{ hero.name }}</p>
@@ -15,21 +12,31 @@
     <p class="Name"> Stats</p>
     <div class="hero-stats">
       {% for stat in hero.stats %}
-        <p>{{ stat.name }}</p>
+        <p class="folder-header">{{ stat.name }}:</p>
         <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
           <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
         </div>
       {% endfor %}
     </div>
-    <p>name: <br> {{ hero.biography.full-name }}</p>
-    <p>birth: <br> {{ hero.biography.place-of-birth }}</p>
-    <p>gender: <br> {{ hero.appearance.gender }}</p>
-    <p>race: <br> {{ hero.appearance.race }}</p>
-    <p>height: <br> {{ hero.appearance.height[1] }}</p>
-    <p>weight: <br> {{ hero.appearance.weight[1] }}</p>
-    <p>aligment: <br> {{ hero.biography.alignment }}</p>
-    <p>publisher: <br> {{ hero.biography.publisher }}</p>
+    <div class="extra-info">
+      <p class="folder-header">name:</p>
+      <p>{{ hero.biography['full-name'] }}</p>
+      <p class="folder-header">birth:</p>
+      <p>{{ hero.biography.place-of-birth }}</p>
+      <p class="folder-header">gender:</p>
+      <p>{{ hero.appearance.gender }}</p>
+      <p class="folder-header">race:</p>
+      <p>{{ hero.appearance.race }}</p>
+      <p class="folder-header">height:</p>
+      <p>{{ hero.appearance.height[1] }}</p>
+      <p class="folder-header">weight:</p>
+      <p>{{ hero.appearance.weight[1] }}</p>
+      <p class="folder-header">alignment:</p>
+      <p>{{ hero.biography.alignment }}</p>
+      <p class="folder-header">publisher:</p>
+      <p>{{ hero.biography.publisher }}</p>
 
+    </div>
   </div>
 </div> 
 

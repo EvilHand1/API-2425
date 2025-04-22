@@ -55,7 +55,6 @@
 
 .Name{
 font-size: 1.5rem;
-font-family: bold;
 padding: .25em;
 color: white;
 }
@@ -92,17 +91,40 @@ color: white;
   border-width: .5rem;
   border-radius: 5px;
   border-color: gold;
-  width: 75dvw;
+  width: 50dvw;
   height: 80dvh;
   color: white;
-
+padding: 1rem;
 }
 
 .right-page{
-  align-self: center;
+  /* align-self: center; */
     position: relative;
     left: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.left-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.right-page p{
+  font-size: 1.25rem;
+  padding: .1rem;
+}
+
+.folder-header {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.left-page .Name {
+  font-size: 2rem;
+}
+
+.extra-info {
+  align-self: flex-start;
 }
