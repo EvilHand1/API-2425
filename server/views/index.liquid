@@ -9,48 +9,46 @@
 
 <ul class="grid">
 
-  <div class="card">
-    <div class="card-content">
-      <p class="Name">{{ hero1.name }}</p>
-      <a href="/Hero/{{hero1.id}}">
-        <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
-        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-{{ hero1.id }}"
-        />
-      </a>
+<div class="card" >
+  <div class="card-content" style="background-image: url('{{ hero1.image.url }}');">
+    <a href="/Hero/{{hero1.id}}" style="view-transition-name: detailpage-{{ hero1.id }}">
+    <h1 class="Name">{{ hero1.name }}</h1>
+    </a>
 
-      <div class="hero-stats">
-        {% for stat in hero1.stats %}
-          <p>{{ stat.name }}</p>
-          <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
-            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-          </div>
-        {% endfor %}
-      </div>
+    <div class="hero-stats">
+      {% for stat in hero1.stats %}
+        <p>{{ stat.name }}</p>
+        <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+          {% for _ in (1..10) %}
+            <span class="star"></span>
+          {% endfor %}
+        </div>
+      {% endfor %}
     </div>
-  </div> 
+  </div>
+</div>
 
 
   <button id="battlebutton">Battle</button>
 
-  <div class="card">
-    <div class="card-content">
-      <p class="Name">{{ hero2.name }}</p>
-      <a href="/Hero/{{hero2.id}}">
-        <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
-        'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-{{ hero2.id }}"
-        />
+  <div class="card" >
+    <div class="card-content" style="background-image: url('{{ hero2.image.url }}');">
+      <a href="/Hero/{{hero2.id}}" style="view-transition-name: detailpage-{{ hero2.id }}">
+      <h1 class="Name">{{ hero2.name }}</h1>
       </a>
-
+  
       <div class="hero-stats">
         {% for stat in hero2.stats %}
           <p>{{ stat.name }}</p>
           <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
-            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+            {% for _ in (1..10) %}
+              <span class="star"></span>
+            {% endfor %}
           </div>
         {% endfor %}
       </div>
     </div>
-  </div> 
+  </div>
 
    
 </ul>
