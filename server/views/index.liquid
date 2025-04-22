@@ -6,7 +6,6 @@
 <form action="/" method="get">
   <button id="NewHeroes">Get New Heroes</button>
 </form>
-<button id="battleButton">Battle</button>
 
 <ul class="grid">
 
@@ -31,9 +30,11 @@
   </div> 
 
 
+  <button id="battlebutton">Battle</button>
+
   <div class="card">
     <div class="card-content">
-      <p>{{ hero2.name }}</p>
+      <p class="Name">{{ hero2.name }}</p>
       <a href="/Hero/{{hero2.id}}">
         <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
         'https://picsum.photos/id/237/480/640'" style="view-transition-name: detailpage-{{ hero2.id }}"

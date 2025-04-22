@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
       id += 1;
     }
 }
-    //DefaultAnimation();
+    DefaultAnimation();
   });
 
 
-  battleButton.addEventListener('click', () => {
+  battlebutton.addEventListener('click', () => {
 console.log('KIIIPP');
 BattleAnimation();
   });
