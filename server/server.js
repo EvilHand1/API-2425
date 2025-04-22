@@ -60,6 +60,7 @@ app.get('/Hero/:id/', async (req, res) => {
 
   const response = await fetch(endpoint);
   const specHero = await response.json();
+  specHero.stats = getPowerStats(specHero)
 
   return res.send(renderTemplate('server/views/detail.liquid', { title: `Detail page for ${id}, hero:`, hero: specHero }));
 });

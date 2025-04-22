@@ -34,3 +34,271 @@ html {
   animation-duration: 400ms;
   animation-timing-function: ease-in-out;
  }
+
+
+ .star-rating {
+  font-size: 24px;
+}
+
+.star {
+  font-size: 2rem;
+  display: inline-block;
+  position: relative;
+}
+
+.star::before {
+  content: '☆';
+  color: #ddd;
+}
+
+.star.filled::before {
+  content: '★';
+  color: #FFD700;
+}
+
+[data-integer="0"] {
+  .star {
+    &:nth-of-type(1) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="1"] {
+  .star {
+    &:nth-of-type(1) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(2) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="2"] {
+  .star {
+    &:nth-of-type(-n + 2) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(3) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="3"] {
+  .star {
+    &:nth-of-type(-n + 3) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(4) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="4"] {
+  .star {
+    &:nth-of-type(-n + 4) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(5) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="5"] {
+  .star {
+    &:nth-of-type(-n + 5) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(6) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="6"] {
+  .star {
+    &:nth-of-type(-n + 6) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(7) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="7"] {
+  .star {
+    &:nth-of-type(-n + 7) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(8) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+
+[data-integer="8"] {
+  .star {
+    &:nth-of-type(-n + 8) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(9) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="9"] {
+  .star {
+    &:nth-of-type(-n + 9) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(10) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+[data-integer="10"] {
+  .star {
+    &:nth-of-type(-n + 10) {
+      &::before {
+        content: '★';
+        color: #FFD700;
+      }
+    }
+
+    &:nth-of-type(11) {
+      &::after {
+        content: '★';
+        color: #FFD700;
+        width: calc(100% * var(--decimal));
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
