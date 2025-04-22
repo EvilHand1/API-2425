@@ -44,11 +44,6 @@
 }
 
 
-
-.card {
-
-}
-
 .Name{
 font-size: 2rem;
 padding: .25em;
@@ -140,4 +135,9 @@ padding: 1rem;
 
 .extra-info {
   align-self: flex-start;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }

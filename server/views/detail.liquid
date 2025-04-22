@@ -10,7 +10,7 @@
 
   <div class="right-page">
     <p class="Name"> Stats</p>
-    <div class="hero-stats">
+    <div>
       {% for stat in hero.stats %}
         <p class="folder-header">{{ stat.name }}:</p>
         <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
