@@ -1,117 +1,56 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    function runAnimation(){
-      const cards = document.getElementsByClassName("card");
-      console.log("Cards found:", cards.length);
- 
-      let id = 1;
-      for (let card of cards){
-      card.animate(
-        [
-          { transform: "translateY(-5px)" },
-        { transform: "translateY(5px)" },
-        ],
-        {
-          duration: 1000,
-          delay: 200 * id,
-          iterations: Infinity,
-          direction: "alternate",
-          easing: "ease-in-out",
-        }
-      );
-      id += 1;
-    }
-}
-    runAnimation();
-  });
-
-</script>
 <h1 class="h1">{{ title }}</h1>
+
+<form action="/" method="get">
+  <button id="NewHeroes">Get New Heroes</button>
+</form>
+
 <ul class="grid">
-  {% comment %} {% for item in hero1 %} {% endcomment %}
-    {% comment %} {% if item.biography.publisher == "Marvel Comics" or item.biography.publisher == "DC Comics"%} {% endcomment %}
-      {% comment %} {% if item.powerstats.intelligence != "null" and 
-      item.powerstats.strength != "null" and 
-      item.powerstats.speed != "null" and 
-      item.powerstats.durability != "null" and 
-      item.powerstats.power != "null" and 
-      item.powerstats.combat != "null" %} {% endcomment %}
-     <table class="card">
-      <tr> <th>{{ hero1.name }}</th></tr>
-      <tr>
-        <th>
-          <a href="/Hero/{{hero1.id}}">
-          <img src={{ hero1.image.url }} alt={{ hero1.name }} onerror="this.src =
-          'https://picsum.photos/id/237/480/640'" />
-          </a>
-        </th>
-      </tr>
-      <tr>
-        <th>Intelligence</th>
-        <th>{{ hero1.powerstats.intelligence }}</th>
-      </tr>
-      <tr>
-        <th>strength</th>
-        <th>{{ hero1.powerstats.strength }}</th>
-      </tr>
-      <tr>
-        <th>speed</th>
-        <th>{{ hero1.powerstats.speed }}</th>
-      </tr>
-      <tr>
-        <th>durability</th>
-        <th>{{ hero1.powerstats.durability }}</th>
-      </tr>
-      <tr>
-        <th>power</th>
-        <th>{{ hero1.powerstats.power }}</th>
-      </tr>
-      <tr>
-      <th>combat</th>
-      <th>{{ hero1.powerstats.combat }}</th>
-      </tr>
-    </table> 
+
+<div class="card" >
+  <div class="card-content" style="background-image: url('{{ hero1.image.url }}');">
+    <a href="/Hero/{{hero1.id}}" style="view-transition-name: detailpage-{{ hero1.id }}">
+    <h1 class="Name">{{ hero1.name }}</h1>
+    </a>
+
+    <div class="hero-stats">
+      {% for stat in hero1.stats %}
+        <p>{{ stat.name }}</p>
+        <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+          {% for _ in (1..10) %}
+            <span class="star"></span>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
 
-    <table class="card">
-      <tr> <th>{{ hero2.name }}</th></tr>
-      <tr>
-        <th>
-          <a href="/Hero/{{hero2.id}}">
-          <img src={{ hero2.image.url }} alt={{ hero2.name }} onerror="this.src =
-          'https://picsum.photos/id/237/480/640'"/>
-          </a>
-        </th>
-      </tr>
-      <tr>
-        <th>Intelligence</th>
-        <th>{{ hero2.powerstats.intelligence }}</th>
-      </tr>
-      <tr>
-        <th>strength</th>
-        <th>{{ hero2.powerstats.strength }}</th>
-      </tr>
-      <tr>
-        <th>speed</th>
-        <th>{{ hero2.powerstats.speed }}</th>
-      </tr>
-      <tr>
-        <th>durability</th>
-        <th>{{ hero2.powerstats.durability }}</th>
-      </tr>
-      <tr>
-        <th>power</th>
-        <th>{{ hero2.powerstats.power }}</th>
-      </tr>
-      <th>combat</th>
-      <th>{{ hero2.powerstats.combat }}</th>
-    </table> 
-    {% comment %} {% endif %}
-  {% endif %} {% endcomment %}
-  {% comment %} {% endfor %} {% endcomment %}
+  <button id="battlebutton">Battle</button>
+
+  <div class="card" >
+    <div class="card-content" style="background-image: url('{{ hero2.image.url }}');">
+      <a href="/Hero/{{hero2.id}}" style="view-transition-name: detailpage-{{ hero2.id }}">
+      <h1 class="Name">{{ hero2.name }}</h1>
+      </a>
+  
+      <div class="hero-stats">
+        {% for stat in hero2.stats %}
+          <p>{{ stat.name }}</p>
+          <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+            {% for _ in (1..10) %}
+              <span class="star"></span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+   
 </ul>
 
 {% endblock %}

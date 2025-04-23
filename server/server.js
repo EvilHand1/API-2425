@@ -5,7 +5,7 @@ import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
 const API_KEY = process.env.API_TOKEN;
-const BaseURL= 'https://superheroapi.com/api.php/' + API_KEY + '/';
+const BaseURL = 'https://superheroapi.com/api.php/' + API_KEY + '/';
 // const HeroURL= BaseURL + 'search/z';
 
 const data = {
@@ -43,32 +43,25 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  // var randomHeroes = Math.floor(Math.random() * 700) + 1;
-  // const TestURL = BaseURL + randomHeroes;
-  // const data = await fetch(TestURL);
-  // const Hero1 = await data.json();
+  let hero1 = await getHero();
+  let hero2 = await getHero();
 
-  // var randomHeroes2 = Math.floor(Math.random() * 700) + 1;
-  // const TestURL2 = BaseURL + randomHeroes2;
-  // const data2 = await fetch(TestURL2);
-  // const Hero2 = await data2.json();
-  
-  const Hero1 = await getHero();
-  const Hero2 = await getHero();
-    // console.log(HeroAll)
-    // console.log('hoi allemaal')
-    console.log("Hero 1: " + Hero1.id + "       Hero 2: " + Hero2.id)
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', hero1: Hero1, hero2: Hero2 }));
+  hero1.stats = getPowerStats(hero1);
+  hero2.stats = getPowerStats(hero2);
+
+  // console.log("Hero 1: " + Hero1.id + "       Hero 2: " + Hero2.id)
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', hero1, hero2 }));
 
 });
 
 app.get('/Hero/:id/', async (req, res) => {
   const id = req.params.id;
   const endpoint = BaseURL + id;
-  
+
   const response = await fetch(endpoint);
   const specHero = await response.json();
-  
+  specHero.stats = getPowerStats(specHero)
+
   return res.send(renderTemplate('server/views/detail.liquid', { title: `Detail page for ${id}, hero:`, hero: specHero }));
 });
 
@@ -86,16 +79,16 @@ async function getHero() {
     const randomId = Math.floor(Math.random() * 700) + 1;
     const response = await fetch(BaseURL + randomId);
     const hero = await response.json();
-    console.log("Hero: " + hero.id)
-    
+    // console.log("Hero: " + hero.id)
+
     var BrokenHero = false;
 
     const publisher = ['Marvel Comics', 'DC Comics'];
     const value = hero.biography.publisher;
 
-    if (!publisher.includes(value)){
+    if (!publisher.includes(value)) {
       BrokenHero = true;
-    } else{
+    } else {
       for (const stat of ['strength', 'speed', 'durability', 'power', 'combat']) {
         const value = hero.powerstats[stat];
         if (value === "null") {
@@ -105,8 +98,23 @@ async function getHero() {
       }
     }
 
-    if (!BrokenHero) { 
+    if (!BrokenHero) {
       return hero;
     }
   }
+}
+
+function getPowerStats(hero) {
+  const newPowerstats = []
+
+  for (const [key, value] of Object.entries(hero.powerstats)) {
+    const integer = Math.floor(value / 10)
+    const decimal = Math.round((value / 10 - integer) * 100) / 100;
+    newPowerstats.push({
+      name: key,
+      integer: integer,
+      decimal: decimal // todo: afronden naar 2 decimalen
+    })
+  }
+  return newPowerstats
 }

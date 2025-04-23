@@ -4,10 +4,140 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   padding: 1rem;
   margin: 1rem;
-  /* background-color: red; */
+  perspective: 300px;
+  place-items: center;
 }
 
-img{
-  width: 100%;
-  height: 100%;
+
+/* https://getcssscan.com/css-buttons-examples */
+#battlebutton {
+  --c: gold;
+  background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p, 100%) / 300% no-repeat, #00043d;
+  color: #0000;
+  border: gold solid 2px;
+  /* border-radius: 2px; */
+  transform: perspective(500px) rotateY(calc(20deg * var(--_i, -1)));
+  text-shadow: calc(var(--_i, -1) * 0.08em) -.01em 0 var(--c), calc(var(--_i, -1) * -0.08em) .01em 2px #0004;
+  outline-offset: .1em;
+  transition: 0.3s;
+}
+
+#battlebutton:hover,
+#battlebutton:focus-visible {
+  --_p: 0%;
+  --_i: 1;
+}
+
+#battlebutton:active {
+  text-shadow: none;
+  color: var(--c);
+  box-shadow: inset 0 0 9e9q #0005;
+  transition: 0s;
+}
+
+#battlebutton {
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 0;
+  cursor: pointer;
+  padding: .2em .6em;
+}
+
+
+.Name{
+font-size: 2rem;
+padding: .25em;
+background: #00043d73;
+border: #00043d00 solid 5px;
+border-radius: 5px;
+}
+.card-content{
+  width: 480px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  overflow: hidden;
+  aspect-ratio: 63 / 88;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+}
+
+.hero-stats {
+  background: #00043d4f;
+    border: rgb(0, 0, 0) solid 0.25rem;
+    border-radius: 5px;
+    /* align-content: center; */
+    place-items: center;
+    position: absolute;
+    width: 25rem;
+    bottom: 0%;
+    margin: .5rem;
+}
+
+.hero-stats p {
+  font-size: 1.5rem;
+}
+
+.card img {
+  border-color: white;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 5px;
+  width: 240px;
+  height: 320px;
+}
+
+.folder {
+  display: flex;
+  flex-direction: row;
+  background: #00043d;
+  border-style: solid;
+  border-width: .5rem;
+  border-radius: 5px;
+  border-color: gold;
+  width: 50dvw;
+  height: 80dvh;
+  color: white;
+padding: 1rem;
+}
+
+.right-page{
+  /* align-self: center; */
+    position: relative;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.right-page p{
+  font-size: 1.25rem;
+  padding: .1rem;
+}
+
+.folder-header {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.left-page .Name {
+  font-size: 2rem;
+}
+
+.extra-info {
+  align-self: flex-start;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }

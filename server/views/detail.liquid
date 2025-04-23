@@ -1,72 +1,43 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<h1 class="h1">{{ hero.name }}</h1>
-<img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="{{ hero.image.width }}" height="{{ hero.image.height }} onerror="this.src =
-          'https://picsum.photos/id/237/480/640'" />
+<div class="folder">
+  <div class="left-page">
+    <p class="Name">File: {{ hero.name }}</p>
+    <img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="{{ hero.image.width }}" height="{{ hero.image.height }} onerror="this.src =
+    'https://picsum.photos/id/237/480/640' style="view-transition-name: detailpage-{{ hero.id }}" />
+  </div>
 
-<table>
-      <tr>
-        <th>Intelligence</th>
-        <th>{{ hero.powerstats.intelligence }}</th>
-      </tr>
-      <tr>
-        <th>strength</th>
-        <th>{{ hero.powerstats.strength }}</th>
-      </tr>
-      <tr>
-        <th>speed</th>
-        <th>{{ hero.powerstats.speed }}</th>
-      </tr>
-      <tr>
-        <th>durability</th>
-        <th>{{ hero.powerstats.durability }}</th>
-      </tr>
-      <tr>
-        <th>power</th>
-        <th>{{ hero.powerstats.power }}</th>
-      </tr>
-      <tr>
-        <th>combat</th>
-      <th> {{ hero.powerstats.combat }}</th>
-      </tr>
+  <div class="right-page">
+    <p class="Name"> Stats</p>
+    <div>
+      {% for stat in hero.stats %}
+        <p class="folder-header">{{ stat.name }}:</p>
+        <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
+          <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="extra-info">
+      <p class="folder-header">name:</p>
+      <p>{{ hero.biography['full-name'] }}</p>
+      <p class="folder-header">birth:</p>
+      <p>{{ hero.biography.place-of-birth }}</p>
+      <p class="folder-header">gender:</p>
+      <p>{{ hero.appearance.gender }}</p>
+      <p class="folder-header">race:</p>
+      <p>{{ hero.appearance.race }}</p>
+      <p class="folder-header">height:</p>
+      <p>{{ hero.appearance.height[1] }}</p>
+      <p class="folder-header">weight:</p>
+      <p>{{ hero.appearance.weight[1] }}</p>
+      <p class="folder-header">alignment:</p>
+      <p>{{ hero.biography.alignment }}</p>
+      <p class="folder-header">publisher:</p>
+      <p>{{ hero.biography.publisher }}</p>
 
-      <tr>
-        <th>gender</th>
-        <th> {{ hero.appearance.gender }}</th>
-      </tr>
-      <tr>
-        <th> birth </th>
-        <th> {{ hero.biography.place-of-birth }} </th>
-      </tr>
-      <tr>
-       <th> publisher </th>
-       <th> {{ hero.biography.publisher }} </th>
-      </tr>
-      <tr>
-        <th> name </th>
-        <th> {{ hero.biography.full-name }}</th>
-      </tr>
-      <tr>
-        <th> aligment </th>
-        <th> {{ hero.biography.alignment }} </th>
-      </tr>
-      <tr>
-        <th> gender </th>
-        <th> {{ hero.appearance.gender }} </th>
-      </tr>
-      <tr>
-        <th> race </th>
-        <th> {{ hero.appearance.race }} </th>
-      </tr>
-      <tr>
-        <th> height </th>
-        <th> {{ hero.appearance.height[1] }} </th>
-      </tr>
-      <tr>
-        <th> weight </th>
-        <th> {{ hero.appearance.weight[1] }} </th>
-      </tr>
-      
-      </table>
+    </div>
+  </div>
+</div> 
+
 {% endblock %}
