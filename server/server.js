@@ -42,7 +42,6 @@ app
   .use('/', sirv('dist'))
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
-  // met Laurens de basis opgezet, maar daarna heel veel verandert?
 app.get('/', async (req, res) => {
   let hero1 = await getHero();
   let hero2 = await getHero();
@@ -75,7 +74,6 @@ const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, templateData);
 };
 
-// forloop met chatGPT
 async function getHero() {
   while (true) {
     const randomId = Math.floor(Math.random() * 700) + 1;
@@ -106,7 +104,6 @@ async function getHero() {
   }
 }
 
-// met hulp van syd
 function getPowerStats(hero) {
   const newPowerstats = []
 
@@ -116,7 +113,7 @@ function getPowerStats(hero) {
     newPowerstats.push({
       name: key,
       integer: integer,
-      decimal: decimal
+      decimal: decimal // todo: afronden naar 2 decimalen
     })
   }
   return newPowerstats

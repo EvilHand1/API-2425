@@ -14,9 +14,7 @@
       {% for stat in hero.stats %}
         <p class="folder-header">{{ stat.name }}:</p>
         <div class="container" style="--decimal: {{ stat.decimal }}" data-integer="{{ stat.integer }}">
-          {% for _ in (1..10) %}
-            <span class="star"></span>
-          {% endfor %}
+          <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
         </div>
       {% endfor %}
     </div>
