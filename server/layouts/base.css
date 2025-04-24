@@ -6,6 +6,9 @@ footer {
   padding: 1rem;
 }
 
+body{
+  overflow:hidden;
+}
 /* https://css-pattern.com/ */
 html {
   --s: 9px; /* control the size*/
@@ -25,7 +28,8 @@ html {
     linear-gradient(-45deg,var(--c)) 0 0/var(--d) var(--c2);
 }
 
-
+/* https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
+en Dante */
 @view-transition{
   navigation: auto;
   }

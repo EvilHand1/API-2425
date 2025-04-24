@@ -1,11 +1,6 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<h1 class="h1">{{ title }}</h1>
-
-<form action="/" method="get">
-  <button id="NewHeroes">Get New Heroes</button>
-</form>
 
 <ul class="grid">
 
@@ -28,8 +23,12 @@
   </div>
 </div>
 
-
-  <button id="battlebutton">Battle</button>
+<div id="Buttons">
+  <button id="battlebutton" class="button">Battle</button>
+  <form action="/" method="get">
+    <button id="NewHeroes" class="button">Get New Heroes</button>
+  </form>
+</div>
 
   <div class="card" >
     <div class="card-content" style="background-image: url('{{ hero2.image.url }}');">
