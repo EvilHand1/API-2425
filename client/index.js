@@ -1,6 +1,5 @@
 import './index.css';
 
-console.log('Hello, world!');
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('NewHeroes').style.display = 'none';
 

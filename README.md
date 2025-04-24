@@ -238,6 +238,103 @@ Aangezien ik vorige dinsdag de hele dag bezig was met de sterren maken, moest ik
 
 ![alt text](<Schermafbeelding 2025-04-22 125515.png>)
 
+### animation API
+
+Met de animation API wou ik nog 1 ding doen. De kaarten daadwerkelijk laten vechten. Dit wou ik doen door een battle knop te maken die een animatie activeert op beide kaarten en zelf verdwijnt.
+
+```js
+battlebutton.addEventListener('click', () => {
+  var random = Math.floor(Math.random() * 2) + 1;
+  console.log(random);
+  if (random === 1){
+    LeftWinsAnimation();
+  }
+  else {
+    RightWinsAnimation();
+  }
+  battlebutton.disabled = true;
+  battlebutton.style.opacity = '0'; 
+
+  setTimeout(() => {
+    battlebutton.style.display = 'none';;
+    document.getElementById('NewHeroes').style.display = 'block';
+  }, 5000);
+});
+```
+
+Met de animatie liep ik tegen een probleem aan. Ik wou dat de kaart 45 graden draait, maar dan als ik hem bewoog op de x-as gingen de kaarten de diepte in. Dus ik heb een animatie op het hoofd object en de child objects.
+
+```js
+function RightWinsAnimation(){
+  const cards = document.getElementsByClassName("card");
+  const cardsContent = document.getElementsByClassName("card-content");
+
+  cardsContent[0].animate(
+    [
+      { transform: `rotateY(deg)`, },
+    { transform: `rotateY(45deg)`, offset: .05},
+    { transform: `rotateY(45deg)`, offset: .20},
+    { transform: `rotateY(-45deg)`, offset: .35},
+    { transform: `rotateY(45deg)`, offset: .8},
+    {transform: `rotateY(45deg)`, offset: 1},
+    ],
+    {
+      duration: 4000,
+      delay: 0,
+      iterations: 1,
+      easing: "ease-in-out",
+    }
+  );
+}
+```
+
+Vervolgens heb ik een animatie gemaakt voor het bewegen van de inhoud van de kaart, die op dezelfde x-as blijft.
+
+```js 
+  const fightAnimation = cards[0].animate(
+    [
+    { transform: "translateX(0dvw)", offset: .05 },
+    { transform: "translateX(20dvw)", offset: .15 },
+    { transform: "translateX(20dvw)", offset: .20 },
+    { transform: "translateX(15dvw", offset: .30},
+    { transform: "translateX(30dvw", offset: .35},
+    { transform: "translateX(25dvw", offset: .45},
+    { transform: "translateX(35dvw", offset: .55},
+    { transform: "translateX(35dvw", offset: .6},
+    { transform: "translateX(25dvw", offset: .75},
+    { transform: "translateX(45dvw", offset: .8},
+    { transform: "translateX(45dvw", offset: 1},
+    ],
+    {
+      duration: 4000,
+      delay: 0,
+      iterations: 1,
+      easing: "ease-in-out",
+      fill: "forwards",
+    }
+  ); 
+```
+
+Nadat de winnende kaart zijn animatie is afgelopen gebruik ik de onfinish fuctie om een nieuwe animatie te starten, die de kaart verplaatst naar het midden van het scherm.
+
+```js
+fightAnimation.onfinish = () => {
+    cards[0].animate(
+      [
+      { transform: "translateX(45dvw)"},
+      { transform: "translateX(23.5dvw"},
+      ],
+      {
+        duration: 1000,
+        delay: 0,
+        iterations: 1,
+        easing: "ease-in-out",
+        fill: "forwards",
+      }
+    )
+  }
+```
+
 ## bronnen
 
 https://shopify.github.io/liquid/
